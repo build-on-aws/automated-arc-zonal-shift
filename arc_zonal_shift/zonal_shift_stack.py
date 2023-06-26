@@ -45,18 +45,8 @@ class ZonalShiftAppStack(Stack):
         topic_arn = topic.topic_arn
         queue_url = queue.queue_url
 
-        # Lambda Layer for Boto3
-        fn_layer = _lambda.LayerVersion(
-            self, "boto3-layer",
-            code=_lambda.AssetCode(
-                "../automated-arc-zonal-shift/src/lambda_layer/"
-                ),
-            compatible_runtimes=[_lambda.Runtime.PYTHON_3_9]
-        )
-
         # Lambda Function code
-        with open(
-            "../automated-arc-zonal-shift/src/lambda_code/zonal_shift_logic.py", encoding="utf8") as fp:
+        with open("../automated-arc-zonal-shift/src/lambda_code/zonal_shift_logic.py", encoding="utf8") as fp:
             code = fp.read()
 
         fn = _lambda.Function(
@@ -71,7 +61,6 @@ class ZonalShiftAppStack(Stack):
                 "TopicArn": topic_arn,
                 "QueueUrl": queue_url
             },
-            layers=[fn_layer],
             dead_letter_queue_enabled=True
         )
 
@@ -95,7 +84,7 @@ class ZonalShiftAppStack(Stack):
             ],
         )
         )
-        
+
         # Output Resource Information
         CfnOutput(
             self,

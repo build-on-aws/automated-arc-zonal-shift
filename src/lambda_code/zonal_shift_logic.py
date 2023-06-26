@@ -1,7 +1,7 @@
 '''
 This Lambda function is triggered by an SQS Queue to
 respond to application gray failures. The function
-starts Route53 ARC Zonal Shift then publishes to an 
+starts Route53 ARC Zonal Shift then publishes to an
 SNS topic for notifications.
 '''
 import boto3
