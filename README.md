@@ -59,8 +59,8 @@ $ cdk deploy
     cd src/sample
     ```
 
-2. Edit the payload.json file to reflect your load balancer's name.
-`DO NOT` change the Key.
+2. Edit the payload.json file. Change the value of `elb_arn` and `az_id` to your load balancer's Amazon Resource Name (ARN) and Availability Zone ID respectively.
+`DO NOT` change any of the Keys.
 
     ```bash
     vi payload.json

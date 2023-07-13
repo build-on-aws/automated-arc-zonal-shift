@@ -1,3 +1,4 @@
 {
-    "Degraded_LB": "LOADBALANCER.elb.REGION.amazonaws.com"
+    "elb_arn": "LOADBALANCER.elb.REGION.amazonaws.com",
+    "az_id": "use1-azx"
 }
