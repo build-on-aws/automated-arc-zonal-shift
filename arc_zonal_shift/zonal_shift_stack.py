@@ -39,7 +39,7 @@ class ZonalShiftAppStack(Stack):
         shift_exp = CfnParameter(
             self,
             "shift_duration",
-            default="5",
+            default="5m",
             type="String"
         )
         topic_arn = topic.topic_arn

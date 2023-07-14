@@ -52,6 +52,8 @@ $ pip install -r requirements.txt
 $ cdk deploy
 ```
 
+After the deployment, you should see an **Output** with the values for the `QueueUrl` and the `SnsTopic`. Please copy them, you will need them later.
+
 ## Testing the Solution
 1. From the root directory change to src/sample.
 
@@ -70,7 +72,7 @@ $ cdk deploy
 
    ![pre-shift](images/before-zonal-shift.png)
 
-4. Switch to the CloudFormation service page. In the Outputs tab, copy the value of the `QueueUrl` and replace the placeholder QUEUE_URL_HERE in the command in step 5.
+4. [Subscribe](https://docs.aws.amazon.com/sns/latest/dg/sns-create-subscribe-endpoint-to-topic.html?sc_channel=el&sc_campaign=devopswave&sc_geo=mult&sc_country=mult&sc_outcome=acq&sc_content=arc-zonal-shift) to the SNS topic saved from the deployment step (optional). Replace the placeholder `QUEUE_URL_HERE` in step 5 (below) with the value of `QueueUrl` saved from the deployment step.
 
 5. Trigger the Zonal Shift by running the command below
 
@@ -78,7 +80,7 @@ $ cdk deploy
     aws sqs send-message --queue-url *QUEUE_URL_HERE* --message-body file://payload.json
     ```
 
-6. To verify the shift, log back into the Load Balancer page in the AWS Console and verify the status of the NLB. Note that new columns have appeared for Zonal Shift as indicated below.
+6. To verify the shift, log back into the Load Balancer page in the AWS Console and verify the status of the NLB. Note that new columns have appeared for Zonal Shift as indicated below. If you subscribed to the SNS topic, you will also receive an SNS notification.
 
    ![post-shift](images/after-zonal-shift.png)
 ```

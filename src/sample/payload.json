@@ -1,4 +1,4 @@
 {
-    "elb_arn": "LOADBALANCER.elb.REGION.amazonaws.com",
+    "elb_arn": "arn:aws:elasticloadbalancing:REGION:123456789012:loadbalancer/net/LOADBALANCER/xxxxxxxxxxxxx",
     "az_id": "use1-azx"
 }
